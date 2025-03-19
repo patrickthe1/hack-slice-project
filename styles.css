@@ -7,7 +7,7 @@
 
 /* Base Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f5f5f5;
@@ -26,7 +26,7 @@ p {
 }
 
 /* Layout */
-header, section, footer {
+section, footer {
     padding: 40px 20px;
     margin-bottom: 20px;
 }
@@ -34,18 +34,114 @@ header, section, footer {
 /* Header Section */
 header {
     text-align: center;
-    background-color: #fff;
+    background: linear-gradient(to bottom, #f0f4f8, #ffffff);
     border-radius: 8px;
-    padding: 60px 20px;
+    padding: 80px 20px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 5s ease infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #222;
+    animation: fadeScaleIn 1s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.8);
 }
 
 header .tagline {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-style: italic;
+    color: #666;
+    margin-bottom: 30px;
+    animation: fadeSlideUp 1s ease-out 0.5s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+header .bio {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    animation: fadeIn 1s ease-out 1s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeScaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Navigation */
+nav {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 15px 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #1e90ff;
 }
 
 /* Main Content */
@@ -53,12 +149,21 @@ main {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin-top: 30px;
 }
 
 section {
     background-color: #fff;
     border-radius: 8px;
     padding: 40px;
+}
+
+/* About Section */
+.fun-fact {
+    font-style: italic;
+    border-left: 4px solid #1e90ff;
+    padding-left: 15px;
+    color: #555;
 }
 
 /* Skills Section */

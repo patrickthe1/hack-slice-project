@@ -14,6 +14,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
 }
 
 /* Typography */
@@ -25,6 +27,7 @@ h1, h2, h3 {
 h1 {
     font-size: 4rem;
     position: relative;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 h1::after {
@@ -63,13 +66,44 @@ section, footer {
 /* Header Section */
 header {
     text-align: center;
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    background: linear-gradient(135deg, #d1e3f6, #a3c1e0, #7aa1d2);
     border-radius: 8px;
     padding: 80px 20px;
     margin-bottom: 0;
     position: relative;
     overflow: hidden;
     animation: gradientShift 5s ease infinite alternate;
+}
+
+header::before, header::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+header::before {
+    bottom: 10%;
+    left: 10%;
+    animation: floatParticle 10s linear infinite;
+}
+
+header::after {
+    top: 20%;
+    right: 15%;
+    animation: floatParticle 13s linear infinite reverse;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(20vw, -15vh);
+    }
 }
 
 @keyframes gradientShift {
@@ -91,13 +125,14 @@ header h1 {
 }
 
 header .tagline {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-style: italic;
     color: #666;
     margin-bottom: 30px;
     animation: fadeSlideUp 1s ease-out 0.5s forwards;
     opacity: 0;
     transform: translateY(20px);
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
 }
 
 header .bio {
@@ -107,6 +142,40 @@ header .bio {
     line-height: 1.7;
     animation: fadeIn 1s ease-out 1s forwards;
     opacity: 0;
+}
+
+/* Profile Image */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #2c3e50;
+    display: block;
+    margin: 0 auto 20px;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeScaleIn 1s ease-out forwards;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #2c3e50;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-50%);
+    }
 }
 
 @keyframes fadeScaleIn {
@@ -182,6 +251,12 @@ main {
 }
 
 /* About Section */
+#about p {
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 .fun-fact {
     font-style: italic;
     border-left: 4px solid #2c3e50;
